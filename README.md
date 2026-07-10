@@ -33,7 +33,7 @@ Report Generator -> structured brief: summary, dos, don'ts, recommendation
 ## Setup
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/aditya-nagaria/pharmaguard-ai.git
 cd agentic-ai-learning
 python -m venv venv
 venv\Scripts\activate
