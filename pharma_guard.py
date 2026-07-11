@@ -257,57 +257,67 @@ print("=" * 50)
 print("PHARMAGUARD AI - INTAKE + FRAMEWORK SELECTION")
 print("=" * 50)
 
-test_task = "We are releaseing a new LIMS modulev3.1  that handles electronic batch records. The system requires electronic signatures and full audit trail capabilities."
+#-------- INTERACTIVE CLI------------
+def run_pharmaguard():
+    print("=" * 60)
+    print("PHARMAGUARD AI - Pharma Compliance Co-Pilot")
+    print("+" * 60)
+    print("Describe your task in plain English.")
+    print("Type 'quit' to exit.")
+    print()
 
-print(f"Task: {test_task}")
-print()
+    session_count = 0
 
-result = app.invoke({
-    "task_description": test_task,
-    "task_type": "",
-    "task_scope": "",
-    "applicable_frameworks": [],
-    "retrieved_requirements": [],
-    "deviations": [],
-    "risk_level": "",
-    "compliance_brief": {},
-    "messages": []
-}, config=config)
+    while True:
+        task_input = input("Task > ")
 
-print(f"Total requirements retrieved: {len(result['retrieved_requirements'])}")
+        if task_input.lower() == "quit":
+            print("Session ended.")
+            break
 
-print()
-print("=" * 50)
-print("RESULTS")
-print("=" * 50)
-print(f"Task Type:          {result['task_type']}")
-print(f"Task Scope:         {result['task_scope']}")
-print(f"Applicable Frameworks: {result['applicable_frameworks']}")
+        session_count +=1
+        thread_id = f"pharma_session_{session_count}"
+        config = {"configurable": {"thread_id": thread_id}}
 
-print()
-print("Retrieved Requirements:")
-for req in result['retrieved_requirements']:
-    print(f" [{req['framework']}] {req['requirement'][:80]}...")
+        print()
+        print(f">>Analyzig task {session_count}...", flush=True)
+        print()
 
-print()
-print(f"Risk_Level: {result['risk_level']}")
-print("Deviations Found:")
-for d in result['deviations']:
-    print(f"  -{d}")
+        result = app.invoke({
+            "task_description": task_input,
+            "task_type": "",
+            "task_scope": "",
+            "applicable_frameworks": [],
+            "retrived_requirements": [],
+            "deviations": [],
+            "risk_level": "",
+            "compliance_brief": {},
+            "messages": []
+        }, config=config)    
+        
+        print()
+        print("-" * 60)
+        print(f"TASK TYPE:      {result['task_type']}")
+        print(f"SCOPE:      {result['task_scope']}")
+        print(f"FRAMEWORKS: {','.join(result['applicable_frameworks'])}")
+        print(f"RISK LEVEL: {result['risk_level'].upper()}")
+        print("-" * 60)
 
-print()
-print("=" * 50)
-print("COMPLIANCE BRIEF")
-print("=" * 50)
-brief = result['compliance_brief']
-print(f"Summary: {brief['summary']}")
-print()
-print("Dos:")
-for item in brief['dos']:
-    print(f"  +{item}")
-print()
-print("Don'ts:")
-for item in brief['donts']:
-    print(f"    -{item}")
-print()
-print(f"Recommendation: {brief['recommendation'].upper()}")
+        brief = result['compliance_brief']
+        print(f"\nSummary:\n{brief['summary']}")
+
+        print(f"\nDOS:")
+        for item in brief.get('dos', []):
+            print(f"  + {item}")
+
+        print(f"\nDON'TS:")
+        for item in brief.get('donts', []):
+            print(f"    -{item}")
+
+        print(f"\nRECOMMENDATION: {brief['recommendation'].upper()}")
+        print("-" * 60)
+        print()
+
+#----ENTRY POINT--
+if __name__ == "__main__":
+    run_pharmaguard()
