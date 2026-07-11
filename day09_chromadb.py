@@ -52,6 +52,50 @@ regulatory_docs = [
     Document(
         page_content="Audit readiness requires that all validation documentation, change controls, deviations, and CAPAs are complete, approved, and retrivable within 24 hours of audit request.",
         metadata={"framework":"Audit Readiness","category":"documentation"}
+    ),
+    Document(
+        page_content="All Bill of Materials entries must be traceable to approved system requirements and functional specifications, with no untraceable components permitted at release.",
+        metadata={"framework": "Change Control", "category": "bom_management"}
+    ),
+    Document(
+        page_content="Development, Staging, and Production environments must each maintain a distinct, documented set of test cases with corresponding evidence and sign-off records.",
+        metadata={"framework": "Change Control", "category": "environment_governance"}
+    ),
+    Document(
+        page_content="All BOM and artifact versions must carry unambiguous version identifiers, with version history maintained and auditable.",
+        metadata={"framework": "Change Control", "category": "versioning"}
+    ),
+    Document(
+        page_content="The BOM must capture complete details of libraries, applications, and versions in alignment with relevant regulatory and cybersecurity resilience requirements including the EU Cyber Resilience Act.",
+        metadata={"framework": "Change Control", "category": "bom_management"}
+    ),
+    Document(
+        page_content="All platform and application validation activities must be performed within a controlled, qualified environment with restricted and logged access.",
+        metadata={"framework": "CAB Governance", "category": "controlled_environment"}
+    ),
+    Document(
+        page_content="Validation reports and related documentation must follow an approved template and carry electronic approval consistent with 21 CFR Part 11 signature requirements.",
+        metadata={"framework": "CAB Governance", "category": "documentation"}
+    ),
+    Document(
+        page_content="A requirements traceability matrix must be maintained and kept current, reflecting the latest approved set of requirements, test cases, and evidence.",
+        metadata={"framework": "CAB Governance", "category": "traceability"}
+    ),
+    Document(
+        page_content="All artifacts must be validated prior to promotion and stored only in qualified, access-controlled environments.",
+        metadata={"framework": "CAB Governance", "category": "artifact_management"}
+    ),
+    Document(
+        page_content="Installation Qualification IQ must verify and document that equipment and software are installed correctly per manufacturer and design specifications before further qualification proceeds.",
+        metadata={"framework": "GAMP 5", "category": "iq_oq_pq"}
+    ),
+    Document(
+        page_content="Operational Qualification OQ must demonstrate the system operates as intended across its full specified operating range, with documented test evidence for each functional requirement.",
+        metadata={"framework": "GAMP 5", "category": "iq_oq_pq"}
+    ),
+    Document(
+        page_content="Performance Qualification PQ must confirm the system performs reliably under real-world operating conditions and production-representative data volumes.",
+        metadata={"framework": "GAMP 5", "category": "iq_oq_pq"}
     )
 ]
 

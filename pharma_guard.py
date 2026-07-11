@@ -72,7 +72,7 @@ def framework_selector(state: PharmaGuardState):
     prompt = ChatPromptTemplate.from_messages([
         ("system","""You are a pharma regulatory expert.
          Based on the task type and scope, select applicable frameworks.
-         Avaiable frameworks: GxP, 21 CFR Part 11, GAMP 5, ISO 13485, IEC 62304. Audit Readiness)
+         Available frameworks: GxP, 21 CFR Part 11, GAMP 5, ISO 13485, IEC 62304, Audit Readiness, Change Control, CAB Governance)
          Respond ONLY in valid JSON with this exact key:
          - applicable_frameworks: list of applicable framework names
          No extra text, no markdown, just JSON."""),
