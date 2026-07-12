@@ -250,13 +250,6 @@ graph.add_edge("report_generator", END)
 memory = MemorySaver()
 app = graph.compile(checkpointer=memory)
 
-#Run===============
-config = {"configurable": {"thread_id": " pharma_session_001"}}
-
-print("=" * 50)
-print("PHARMAGUARD AI - INTAKE + FRAMEWORK SELECTION")
-print("=" * 50)
-
 #-------- INTERACTIVE CLI------------
 def run_pharmaguard():
     print("=" * 60)
@@ -288,7 +281,7 @@ def run_pharmaguard():
             "task_type": "",
             "task_scope": "",
             "applicable_frameworks": [],
-            "retrived_requirements": [],
+            "retrieved_requirements": [],
             "deviations": [],
             "risk_level": "",
             "compliance_brief": {},
