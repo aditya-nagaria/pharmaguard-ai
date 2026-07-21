@@ -75,6 +75,6 @@ if analyze_clicked:
                 st.write(f"- {item}")
     
     st.divider()
-    rec = brief["recommendation"].upper()
+    rec = brief.get("recommendation", brief.get("Recommendation", "delay")).upper()
     rec_colors = {"APPROVE": "success", "DELAY": "warning", "REJECT": "error"}
     getattr(st, rec_colors.get(rec, "info"))(f"**Final Recommendation: {rec}**")
