@@ -196,8 +196,8 @@ def report_generator(state: PharmaGuardState):
         Synthesize the analysis into a final compliance brief.
         Respond ONLY in valid JSON with these exact keys:
         - summary: 2-3 sentence executive summary
-        - dos: (exact key name "dos", plural) list of 3-5 specific actions required before proceeding
-        - donts: list of 2-3 things to avoid
+        - dos: use EXACTLY the key name "dos" (three letters, no apostrophe) - list of 3-5 actions
+        - donts: use EXACTLY the key name "donts" (five letters, no apostrophe) - list of 2-3 things to avoid
         - recommendation: 'approve', 'delay', or 'reject'
         No extra text, no markdown, just JSON."""),
         ("human", """Task Type: {task_type}

@@ -52,7 +52,7 @@ if analyze_clicked:
             risk = result["risk_level"].lower()
             st.metric("Risk Level", f"{risk_colors.get(risk, '')} {risk.upper()}")
         
-        st.subheader("Applcable Frameworks")
+        st.subheader("Applicable Frameworks")
         st.write(",".join(result["applicable_frameworks"]))
 
         st.subheader("Deviations Found")
@@ -67,11 +67,13 @@ if analyze_clicked:
         col3, col4 = st.columns(2)
         with col3:
             st.subheader(":white_check_mark: Do's")
-            for item in brief.get("dos", []):
+            dos_items = brief.get("dos", brief.get("do's", brief.get("do", brief.get("actions", brief.get("recommendations", [])))))
+            for item in dos_items:
                 st.write(f"- {item}")
         with col4:
             st.subheader(":no_entry_sign: Don'ts")
-            for item in brief.get("donts", []):
+            donts_items = brief.get("donts", brief.get("don'ts", brief.get("dont", brief.get("avoid", []))))
+            for item in donts_items:
                 st.write(f"- {item}")
     
     st.divider()
